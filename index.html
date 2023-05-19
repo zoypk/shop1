@@ -8,19 +8,19 @@
       background-color: #333;
       padding: 20px;
       color: #fff;
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     h1 {
       margin: 0;
-      font-family:sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     /* Navigation Bar */
     nav {
       background-color: #555;
       padding: 10px;
-      font-family:sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     nav ul {
@@ -37,14 +37,14 @@
       color: #fff;
       text-decoration: none;
       padding: 10px;
-      font-family:sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     /* Table and Form */
     table {
       border-collapse: collapse;
       width: 100%;
-      font-family:sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     th, td {
@@ -54,6 +54,46 @@
 
     th {
       background-color: #f2f2f2;
+    }
+
+    /* Order Summary */
+    #order-summary {
+      display: none; /* Hide the order summary by default */
+      font-family: Arial, sans-serif;
+    }
+
+    /* Dark Mode */
+    body {
+      background-color: #222;
+      color: #fff;
+    }
+
+    header, nav {
+      background-color: #333;
+    }
+
+    table, th, td {
+      border-color: #fff;
+      color: #fff;
+    }
+
+    th {
+      background-color: #444;
+    }
+
+    form input{
+      color: #000000;
+    }
+    form label, form button {
+      color: #ffffff;
+    }
+
+    form button {
+      background-color: #555;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
     }
 
     /* Responsive Layout */
@@ -80,6 +120,14 @@
         font-size: 14px;
       }
     }
+
+    /* Flexbox Layout */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
   </style>
 </head>
 <body>
@@ -88,48 +136,57 @@
   </header>
 
 
-  <h1>Product Catalog</h1>
-  <table>
-    <tr>
-      <th>Product Name</th>
-      <th>Price</th>
-    </tr>
-    <tr>
-      <td>Product A</td>
-      <td>$20</td>
-    </tr>
-    <tr>
-      <td>Product B</td>
-      <td>$40</td>
-    </tr>
-    <tr>
-      <td>Product C</td>
-      <td>$50</td>
-    </tr>
-  </table>
 
-  <h1>Order Form</h1>
-  <form id="order-form">
-    <label for="product-a-quantity">Product A Quantity:</label>
-    <input type="number" id="product-a-quantity" min="0" value="0">
-    <label for="product-a-gift">Gift Wrap:</label>
-    <input type="checkbox" id="product-a-gift"><br>
+  <div class="container">
+    <div>
+      <h1>Product Catalog</h1>
+      <table>
+        <tr>
+          <th>Product Name</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>Product A</td>
+          <td>$20</td>
+        </tr>
+        <tr>
+          <td>Product B</td>
+          <td>$40</td>
+        </tr>
+        <tr>
+          <td>Product C</td>
+          <td>$50</td>
+        </tr>
+      </table>
+    </div>
 
-    <label for="product-b-quantity">Product B Quantity:</label>
-    <input type="number" id="product-b-quantity" min="0" value="0">
-    <label for="product-b-gift">Gift Wrap:</label>
-    <input type="checkbox" id="product-b-gift"><br>
+    <div>
+      <h1>Order Form</h1>
+      <form id="order-form">
+        <label for="product-a-quantity">Product A Quantity:</label>
+        <input type="number" id="product-a-quantity" min="0" value="0">
+        <label for="product-a-gift">Gift Wrap:</label>
+        <input type="checkbox" id="product-a-gift"><br>
 
-    <label for="product-c-quantity">Product C Quantity:</label>
-    <input type="number" id="product-c-quantity" min="0" value="0">
-    <label for="product-c-gift">Gift Wrap:</label>
-    <input type="checkbox" id="product-c-gift"><br>
+        <label for="product-b-quantity">Product B Quantity:</label>
+        <input type="number" id="product-b-quantity" min="0" value="0">
+        <label for="product-b-gift">Gift Wrap:</label>
+        <input type="checkbox" id="product-b-gift"><br>
 
-    <button type="submit">Submit</button>
-  </form>
+        <label for="product-c-quantity">Product C Quantity:</label>
+        <input type="number" id="product-c-quantity" min="0" value="0">
+        <label for="product-c-gift">Gift Wrap:</label>
+        <input type="checkbox" id="product-c-gift"><br>
 
-  <h1>Order Summary</h1>
-  <div id="order-summary"></div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div>
+      <h1>Order Summary</h1>
+      <div id="order-summary"></div>
+    </div>
+  </div>
 
   <script>
     document.getElementById('order-form').addEventListener('submit', function(event) {
@@ -138,89 +195,59 @@
     });
 
     function calculateOrder() {
-      const productAQuantity = parseInt(document.getElementById('product-a-quantity').value);
-      const productBQuantity = parseInt(document.getElementById('product-b-quantity').value);
-      const productCQuantity = parseInt(document.getElementById('product-c-quantity').value);
-      const productAGift = document.getElementById('product-a-gift').checked;
-      const productBGift = document.getElementById('product-b-gift').checked;
-      const productCGift = document.getElementById('product-c-gift').checked;
+      var productAQuantity = parseInt(document.getElementById('product-a-quantity').value);
+      var productAGift = document.getElementById('product-a-gift').checked;
+      var productBQuantity = parseInt(document.getElementById('product-b-quantity').value);
+      var productBGift = document.getElementById('product-b-gift').checked;
+      var productCQuantity = parseInt(document.getElementById('product-c-quantity').value);
+      var productCGift = document.getElementById('product-c-gift').checked;
 
-      // Price of each product
-      const productAPrice = 20;
-      const productBPrice = 40;
-      const productCPrice = 50;
+      // Calculate the subtotal
+      var productAPrice = 20;
+      var productBPrice = 40;
+      var productCPrice = 50;
+      var subtotal = productAQuantity * productAPrice + productBQuantity * productBPrice + productCQuantity * productCPrice;
 
-      // Calculate total amount for each product
-      const productATotal = productAQuantity * productAPrice;
-      const productBTotal = productBQuantity * productBPrice;
-      const productCTotal = productCQuantity * productCPrice;
-
-      // Calculate subtotal
-      const subtotal = productATotal + productBTotal + productCTotal;
-
-      // Calculate discount
-      let discountName = '';
-      let discountAmount = 0;
+      // Calculate the discounts
+      var discountName = '';
+      var discountAmount = 0;
 
       if (subtotal > 200) {
         discountName = 'flat_10_discount';
         discountAmount = 10;
       } else if (productAQuantity > 10 || productBQuantity > 10 || productCQuantity > 10) {
         discountName = 'bulk_5_discount';
-        discountAmount = Math.min(productAQuantity > 10 ? productATotal * 0.05 : 0, productBQuantity > 10 ? productBTotal * 0.05 : 0, productCQuantity > 10 ? productCTotal * 0.05 : 0);
+        discountAmount = Math.min(productAQuantity, productBQuantity, productCQuantity) * 0.05;
+      } else if (productAQuantity + productBQuantity + productCQuantity > 20) {
+        discountName = 'bulk_10_discount';
+        discountAmount = subtotal * 0.1;
+      } else if (productAQuantity + productBQuantity + productCQuantity > 30 && (productAQuantity > 15 || productBQuantity > 15 || productCQuantity > 15)) {
+        discountName = 'tiered_50_discount';
+        discountAmount = Math.max(0, Math.min(productAQuantity - 15, productBQuantity - 15, productCQuantity - 15)) * 0.5 * productAPrice;
       }
 
-      const totalQuantity = productAQuantity + productBQuantity + productCQuantity;
+      // Calculate the gift wrap fee
+      var giftWrapFee = (productAGift ? productAQuantity : 0) + (productBGift ? productBQuantity : 0) + (productCGift ? productCQuantity : 0);
 
-      if (totalQuantity > 20) {
-        const cartDiscount = subtotal * 0.1;
-        if (cartDiscount > discountAmount) {
-          discountName = 'bulk_10_discount';
-          discountAmount = cartDiscount;
-        }
-      }
+      // Calculate the shipping fee
+      var shippingFee = Math.ceil((productAQuantity + productBQuantity + productCQuantity) / 10) * 5;
 
-      if (totalQuantity > 30 && (productAQuantity > 15 || productBQuantity > 15 || productCQuantity > 15)) {
-        const tieredDiscount = Math.min(productAQuantity > 15 ? (productAQuantity - 15) * productAPrice * 0.5 : 0, productBQuantity > 15 ? (productBQuantity - 15) * productBPrice * 0.5 : 0, productCQuantity > 15 ? (productCQuantity - 15) * productCPrice * 0.5 : 0);
-        if (tieredDiscount > discountAmount) {
-          discountName = 'tiered_50_discount';
-          discountAmount = tieredDiscount;
-        }
-      }
+      // Calculate the total
+      var total = subtotal - discountAmount + giftWrapFee + shippingFee;
 
-      // Calculate shipping fee
-      const packageCount = Math.ceil(totalQuantity / 10);
-      const shippingFee = packageCount * 5;
-
-      // Calculate gift wrap fee
-      let giftWrapFee = 0;
-      if (productAGift) {
-        giftWrapFee += productAQuantity;
-      }
-      if (productBGift) {
-        giftWrapFee += productBQuantity;
-      }
-      if (productCGift) {
-        giftWrapFee += productCQuantity;
-      }
-      giftWrapFee *= 1; // $1 per unit
-
-      // Calculate total amount
-      const total = subtotal - discountAmount + shippingFee + giftWrapFee;
-
-      // Display order summary
-      const orderSummary = document.getElementById('order-summary');
+      // Display the order summary
+      var orderSummary = document.getElementById('order-summary');
       orderSummary.innerHTML = `
-        <p>Product A: ${productAQuantity} (Total: $${productATotal})</p>
-        <p>Product B: ${productBQuantity} (Total: $${productBTotal})</p>
-        <p>Product C: ${productCQuantity} (Total: $${productCTotal})</p>
-        <p>Subtotal: $${subtotal}</p>
-        <p>Discount Applied: ${discountName} ($${discountAmount})</p>
-        <p>Shipping Fee: $${shippingFee}</p>
-        <p>Gift Wrap Fee: $${giftWrapFee}</p>
-        <p>Total: $${total}</p>
+        <p>Subtotal: $${subtotal.toFixed(2)}</p>
+        <p>Discount: ${discountName} ($${discountAmount.toFixed(2)})</p>
+        <p>Gift Wrap Fee: $${giftWrapFee.toFixed(2)}</p>
+        <p>Shipping Fee: $${shippingFee.toFixed(2)}</p>
+        <p>Total: $${total.toFixed(2)}</p>
       `;
+
+      // Display the Order Summary section
+      orderSummary.style.display = 'block';
     }
-  </script>
+    </script>
 </body>
 </html>
