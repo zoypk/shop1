@@ -3,130 +3,118 @@
 <head>
   <title>Product Catalog</title>
   <style>
-    /* Header */
-    header {
-      background-color: #333;
-      padding: 20px;
-      color: #fff;
-      font-family: Arial, sans-serif;
-    }
-
-    h1 {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    /* Navigation Bar */
-    nav {
-      background-color: #555;
-      padding: 10px;
-      font-family: Arial, sans-serif;
-    }
-
-    nav ul {
-      list-style-type: none;
+    body {
+      font-family: sans-serif;
       margin: 0;
       padding: 0;
-    }
-
-    nav ul li {
-      display: inline;
-    }
-
-    nav ul li a {
+      background-color: #333;
       color: #fff;
-      text-decoration: none;
-      padding: 10px;
-      font-family: Arial, sans-serif;
     }
 
-    /* Table and Form */
+    header {
+      background-color: #222;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #444;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    .catalog {
+      flex-basis: 100%;
+      margin-bottom: 20px;
+    }
+
     table {
-      border-collapse: collapse;
       width: 100%;
-      font-family: Arial, sans-serif;
+      border-collapse: collapse;
+      color: #fff;
     }
 
     th, td {
-      border: 1px solid black;
-      padding: 8px;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-
-    /* Order Summary */
-    #order-summary {
-      display: none; /* Hide the order summary by default */
-      font-family: Arial, sans-serif;
-    }
-
-    /* Dark Mode */
-    body {
-      background-color: #222;
-      color: #fff;
-    }
-
-    header, nav {
-      background-color: #333;
-    }
-
-    table, th, td {
-      border-color: #fff;
-      color: #fff;
+      padding: 10px;
+      border: 1px solid #555;
     }
 
     th {
       background-color: #444;
+      text-align: left;
     }
 
-    form input{
-      color: #000000;
-    }
-    form label, form button {
-      color: #ffffff;
+    .order-form {
+      flex-basis: 100%;
+      margin-bottom: 20px;
     }
 
-    form button {
-      background-color: #555;
-      color: #fff;
+    .order-summary {
+      flex-basis: 100%;
+      display: none;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    label {
+      flex-basis: 100%;
+      margin-bottom: 5px;
+    }
+
+    input[type="number"], input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    button[type="submit"] {
       padding: 10px 20px;
+      background-color: #222;
+      color: #fff;
       border: none;
       cursor: pointer;
     }
 
-    /* Responsive Layout */
-    @media only screen and (max-width: 600px) {
-      h1 {
-        font-size: 24px;
+    @media screen and (min-width: 600px) {
+      .catalog {
+        flex-basis: 50%;
+        padding-right: 10px;
       }
 
-      table {
-        font-size: 14px;
+      .order-form {
+        flex-basis: 50%;
+        padding-left: 10px;
       }
 
-      form label, form input, form button {
-        display: block;
-        margin-bottom: 10px;
-        width: 100%;
+      .order-summary {
+        flex-basis: 100%;
       }
 
-      form button {
-        width: auto;
+      form {
+        flex-wrap: nowrap;
       }
 
-      #order-summary {
-        font-size: 14px;
+      label {
+        flex-basis: auto;
+        margin-bottom: 0;
+        margin-right: 10px;
       }
-    }
-
-    /* Flexbox Layout */
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
+      
     }
   </style>
 </head>
@@ -177,8 +165,8 @@
         <input type="number" id="product-c-quantity" min="0" value="0">
         <label for="product-c-gift">Gift Wrap:</label>
         <input type="checkbox" id="product-c-gift"><br>
-
-        <button type="submit">Submit</button>
+          <div><button type="submit">Submit</button></div>
+        
       </form>
     </div>
 
